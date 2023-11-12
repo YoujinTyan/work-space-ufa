@@ -1,8 +1,12 @@
 from simple_term_menu import TerminalMenu
 from art import tprint
 
-sick = ["шизофрения","галюцинации","звуки"]
 
+sick = [
+	"шизофрения",
+	"галюцинации",
+	"звуки",
+]
 not_sick = ["здоров","впорядке","жалоб"]
 
 
@@ -11,7 +15,7 @@ def get_main_menu():
 
   print("Кто ты?")
   menu = TerminalMenu(main_menu)
-  i = 0
+  # i = 0
   i = menu.show()
   return main_menu[i]
 
@@ -31,7 +35,9 @@ def get_doc_menu():
   menu = TerminalMenu(doc_menu)
   i = 0
   i = menu.show()
+	
   return doc_menu[i]
+
 
 def show_body(all_body):
   for body in all_body:

@@ -19,9 +19,9 @@ def add_body(state):
   global body
 
   low_feed = ''
+	
   for words in state:
-    low_feed += state.lower()
-
+    low_feed += words.lower()
   
   body.append(low_feed)
 
@@ -32,15 +32,24 @@ def verification(password):
   return False
 
 
+def get_all_body():
+  feed = load_all_body()
+  for i in range(len(feed)):
+    massege = feed[i] + "\n\n"
+  return massege
+
+
 def get_sick():
   tmp = models.get_templates()[0]
   feeds = load_all_body()
   sick = []
+	
   for feed in feeds:
     for word in tmp:
       if word == feed:
         sick.append(feeds)
         break
+				
   return sick
 
 def get_not_sick():
@@ -62,8 +71,8 @@ def menu_doc_choiser(name):
       for feed in feeds:
         print(feed, '\n\n')
     else:
-        print("здоровых нет")
-
+        print("здоровых нет \n\n")
+    return False
 
   elif name == "больные":
     feeds = get_sick()
@@ -72,5 +81,16 @@ def menu_doc_choiser(name):
       for feed in feeds:
         print(feed, '\n\n')
     else:
-      print("работы нет(((")
+      print("работы нет((( \n\n")
+    return False
 
+  elif name == "все жалобы":
+    feeds = load_all_body()
+    if len(feeds) > 0:
+      print()
+      for feed in feeds:
+         print(feed, '\n\n')
+    else:
+      print("работы совсем нет((( \n\n")
+    return False
+  
